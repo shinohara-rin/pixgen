@@ -1,0 +1,5 @@
+cffi==1.14.2
+nbtlib==1.7.0
+numpy==1.19.1
+Pil-Lite==0.1.1
+pycparser==2.20
