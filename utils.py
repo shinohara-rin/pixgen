@@ -19,11 +19,13 @@ def rgb32to16ex(rgb):
 
 def generate_nbt(img: Image, transparent=False):
     (width, length) = img.size
+    print(f"Image dimension:{width}*{length}")
     blocks = bytearray()
     data = bytearray()
     addblocks_raw = bytearray()
     te = list()
     for l in range(length):
+        print('.', end='')
         for w in range(width):
             pixel = img.get_pixel((w, l))
             color_code = rgb32to16ex(pixel) if transparent else rgb32to16(pixel)
@@ -42,6 +44,7 @@ def generate_nbt(img: Image, transparent=False):
                 blocks.append(0)
                 data.append(0)
                 addblocks_raw.append(0)
+    print('done!')
     addblocks = bytearray()
     for i in range(0, len(addblocks_raw), 2):
         addblocks.append(addblocks_raw[i] + (addblocks_raw[i + 1] << 4) if len(addblocks_raw) - i >= 2 else 3)
